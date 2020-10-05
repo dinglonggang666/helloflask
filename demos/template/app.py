@@ -6,13 +6,17 @@
     :license: MIT, see LICENSE for more details.
 """
 import os
+# flash: 闪现信息（类似于弹框）
+# url_for: 内置模板全局函数(用于生成url的函数)
+# Markup：
 from flask import Flask, render_template, flash, redirect, url_for, Markup
 
 app = Flask(__name__)
+# 变量值可以写在.env文件中，如果没有默认使用第二位置参数
 app.secret_key = os.getenv('SECRET_KEY', 'secret string')
 app.jinja_env.trim_blocks = True
 app.jinja_env.lstrip_blocks = True
-
+#
 user = {
     'username': 'Grey Li',
     'bio': 'A boy who loves movies and music.',
