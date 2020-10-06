@@ -47,6 +47,7 @@ def index():
 
 
 # register template context handler
+# 注册全局变量 -- 81页
 @app.context_processor
 def inject_info():
     foo = 'I am foo.'
@@ -54,18 +55,21 @@ def inject_info():
 
 
 # register template global function
+# 注册全局函数
 @app.template_global()
 def bar():
     return 'I am bar.'
 
 
 # register template filter
+# 注册自定义过滤器，使用Markup类将它标记为安全字符
 @app.template_filter()
 def musical(s):
     return s + Markup(' &#9835;')
 
 
 # register template test
+# 注册自定义测试器
 @app.template_test()
 def baz(n):
     if n == 'baz':
@@ -79,6 +83,7 @@ def watchlist_with_static():
 
 
 # message flashing
+# 信息闪现
 @app.route('/flash')
 def just_flash():
     flash('I am flash, who is looking for me?')
@@ -86,12 +91,14 @@ def just_flash():
 
 
 # 404 error handler
+# 404错误处理器
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('errors/404.html'), 404
 
 
 # 500 error handler
+# 500 错误处理器
 @app.errorhandler(500)
 def internal_server_error(e):
     return render_template('errors/500.html'), 500
