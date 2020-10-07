@@ -23,6 +23,7 @@ app.jinja_env.trim_blocks = True
 app.jinja_env.lstrip_blocks = True
 
 # Custom config
+# 自定义配置
 app.config['UPLOAD_PATH'] = os.path.join(app.root_path, 'uploads')
 
 if not os.path.exists(app.config['UPLOAD_PATH']):
